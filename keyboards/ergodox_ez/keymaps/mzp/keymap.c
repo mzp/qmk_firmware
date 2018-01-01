@@ -5,6 +5,7 @@
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
 #define MDIA 2 // media keys
+#define EMCS 3 // Emacs keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -34,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         KC_EQL,         KC_1,           KC_2,    KC_3,   KC_4,   KC_5,   KC_LEFT,
         KC_TAB,         KC_QUOT,        KC_COMM, KC_DOT, KC_P,   KC_Y,   TG(1),
-        KC_LCTRL,       KC_A,           KC_O,    KC_E,   KC_U,   KC_I,
+        MO(EMCS),       KC_A,           KC_O,    KC_E,   KC_U,   KC_I,
         KC_LSFT,        KC_SCLN,        KC_Q,    KC_J,   KC_K,   KC_X,   ALL_T(KC_NO),
         MO(2),          KC_QUOT,      KC_GRV,         KC_LGUI,KC_LALT,
                                               KC_LEFT,        KC_RGHT,
@@ -114,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 // MEDIA AND MOUSE
-KEYMAP(
+[MDIA] = KEYMAP(
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, LSFT(LGUI(KC_4)), KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,
@@ -133,6 +134,26 @@ KEYMAP(
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_WBAK
 ),
+[EMCS] = KEYMAP(  // layer 3 : emacs
+        // left hand
+        LCTL(KC_EQL),   LCTL(KC_1),     LCTL(KC_2),    LCTL(KC_3),   LCTL(KC_4),   LCTL(KC_5),   LCTL(KC_LEFT),
+        LCTL(KC_TAB),   LCTL(KC_QUOT),  LCTL(KC_COMM), LCTL(KC_DOT), LCTL(KC_P),   LCTL(KC_Y),   KC_TRNS,
+        KC_TRNS,        LCTL(KC_A),     LCTL(KC_O),    LCTL(KC_E),   LCTL(KC_U),   LCTL(KC_I),
+        LCTL(KC_LSFT),  LCTL(KC_SCLN),  LCTL(KC_Q),    LCTL(KC_J),   LCTL(KC_K),   LCTL(KC_X),   KC_TRNS,
+        KC_TRNS,        LCTL(KC_QUOT),  LCTL(KC_GRV),  LCTL(KC_LGUI),LCTL(KC_LALT),
+                                                       LCTL(KC_LEFT),LCTL(KC_RGHT),
+                                                                     LCTL(KC_HOME),
+                                        LCTL(KC_SPC),  LCTL(KC_BSPC),LCTL(KC_END),
+        // right hand
+        LCTL(KC_RGHT),  LCTL(KC_6),     LCTL(KC_7),    LCTL(KC_8),   LCTL(KC_9),   LCTL(KC_0),    LCTL(KC_BSLS),
+        KC_TRNS,        LCTL(KC_F),     LCTL(KC_G),    LCTL(KC_C),   LCTL(KC_R),   LCTL(KC_L),    LCTL(KC_SLSH),
+                        KC_DELETE,      KC_BSPC,       LCTL(KC_T),   LCTL(KC_N),   LCTL(KC_S),    LCTL(KC_MINS),
+        KC_TRNS,        LCTL(KC_B),     LCTL(KC_M),    LCTL(KC_W),   LCTL(KC_V),   LCTL(KC_Z),    LCTL(KC_RSFT),
+                                        LCTL(KC_ESC),  LCTL(KC_RGUI),LCTL(KC_LBRC),LCTL(KC_RBRC), KC_TRNS,
+        LCTL(KC_UP),    LCTL(KC_DOWN),
+        LCTL(KC_PGUP),
+        LCTL(KC_PGDN),  LCTL(KC_TAB), LCTL(KC_ENT)
+    ),
 };
 
 const uint16_t PROGMEM fn_actions[] = {
